@@ -1,0 +1,281 @@
+{
+  "name": "PiuPiuWer",
+  "version": "1",
+  "items": [
+    {
+      "type": "folder",
+      "name": "Piu",
+      "filename": "Piu",
+      "root": {
+        "meta": {
+          "name": "Piu"
+        }
+      },
+      "items": [
+        {
+          "type": "http",
+          "name": "CreatePius",
+          "filename": "CreatePius.bru",
+          "seq": 3,
+          "request": {
+            "url": "http://localhost:3333/pius/create",
+            "method": "POST",
+            "headers": [],
+            "params": [],
+            "body": {
+              "mode": "json",
+              "json": "{\n  \"message\": \"alfa betinha\",\n  \"numLike\": 3,\n  \"numComment\": 8\n}",
+              "formUrlEncoded": [],
+              "multipartForm": [],
+              "file": []
+            },
+            "script": {},
+            "vars": {},
+            "assertions": [],
+            "tests": "",
+            "docs": "",
+            "auth": {
+              "mode": "inherit"
+            }
+          }
+        },
+        {
+          "type": "http",
+          "name": "DeletePiu",
+          "filename": "DeletePiu.bru",
+          "seq": 4,
+          "request": {
+            "url": "http://localhost:3333/pius/delete/bb0f7df9-b2cd-4ef7-8a27-587801ab0183",
+            "method": "DELETE",
+            "headers": [],
+            "params": [],
+            "body": {
+              "mode": "none",
+              "formUrlEncoded": [],
+              "multipartForm": [],
+              "file": []
+            },
+            "script": {},
+            "vars": {},
+            "assertions": [],
+            "tests": "",
+            "docs": "",
+            "auth": {
+              "mode": "inherit"
+            }
+          }
+        },
+        {
+          "type": "http",
+          "name": "GetAllPius",
+          "filename": "GetAllPius.bru",
+          "seq": 1,
+          "request": {
+            "url": "http://localhost:3333/pius/getAll",
+            "method": "GET",
+            "headers": [],
+            "params": [],
+            "body": {
+              "mode": "json",
+              "json": "",
+              "formUrlEncoded": [],
+              "multipartForm": [],
+              "file": []
+            },
+            "script": {},
+            "vars": {},
+            "assertions": [],
+            "tests": "",
+            "docs": "",
+            "auth": {
+              "mode": "inherit"
+            }
+          }
+        },
+        {
+          "type": "http",
+          "name": "GetPiuById",
+          "filename": "GetPiuById.bru",
+          "seq": 2,
+          "request": {
+            "url": "http://localhost:3333/pius/getById/92a2a7e4-a9a3-44a6-915f-2eb9d8b5f225",
+            "method": "GET",
+            "headers": [],
+            "params": [],
+            "body": {
+              "mode": "none",
+              "formUrlEncoded": [],
+              "multipartForm": [],
+              "file": []
+            },
+            "script": {},
+            "vars": {},
+            "assertions": [],
+            "tests": "",
+            "docs": "",
+            "auth": {
+              "mode": "inherit"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "type": "folder",
+      "name": "User",
+      "filename": "User",
+      "root": {
+        "meta": {
+          "name": "User"
+        }
+      },
+      "items": [
+        {
+          "type": "http",
+          "name": "GetAllUsers",
+          "filename": "GetAllUsers.bru",
+          "seq": 2,
+          "request": {
+            "url": "http://localhost:3333/user/getAll",
+            "method": "GET",
+            "headers": [],
+            "params": [],
+            "body": {
+              "mode": "none",
+              "formUrlEncoded": [],
+              "multipartForm": [],
+              "file": []
+            },
+            "script": {},
+            "vars": {},
+            "assertions": [],
+            "tests": "",
+            "docs": "",
+            "auth": {
+              "mode": "inherit"
+            }
+          }
+        },
+        {
+          "type": "http",
+          "name": "getUserById",
+          "filename": "getUserById.bru",
+          "seq": 3,
+          "request": {
+            "url": "http://localhost:3333/user/getById/d5fccba9-9d92-49e6-a9d9-805331e471b4",
+            "method": "GET",
+            "headers": [],
+            "params": [],
+            "body": {
+              "mode": "json",
+              "json": "{\n  \"userName\": \"gutto\",\n  \"userEmail\": \"gutto@gmail.com\",\n  \"userCPF\": \"123.456.789-12\",\n  \"userPhone\": \"(11) 99999-1235\", \n  \"userPassword\": \"123456780\"   \n}",
+              "formUrlEncoded": [],
+              "multipartForm": [],
+              "file": []
+            },
+            "script": {},
+            "vars": {},
+            "assertions": [],
+            "tests": "",
+            "docs": "",
+            "auth": {
+              "mode": "inherit"
+            }
+          }
+        },
+        {
+          "type": "http",
+          "name": "UserCreate",
+          "filename": "UserCreate.bru",
+          "seq": 1,
+          "request": {
+            "url": "http://localhost:3333/user/create",
+            "method": "POST",
+            "headers": [],
+            "params": [],
+            "body": {
+              "mode": "json",
+              "json": "{\n  \"userName\": \"damisio\",\n  \"userEmail\": \"gutto@gmail.com\",\n  \"userCPF\": \"123.456.789-12\",\n  \"userPhone\": \"(11) 99999-1235\", \n  \"userPassword\": \"123456780\"   \n}\n\n",
+              "formUrlEncoded": [],
+              "multipartForm": [],
+              "file": []
+            },
+            "script": {},
+            "vars": {},
+            "assertions": [],
+            "tests": "",
+            "docs": "",
+            "auth": {
+              "mode": "inherit"
+            }
+          }
+        },
+        {
+          "type": "http",
+          "name": "UserDelete",
+          "filename": "UserDelete.bru",
+          "seq": 5,
+          "request": {
+            "url": "http://localhost:3333/user/delete/43fd0e42-9036-47c7-9a0e-9446b9729fc2",
+            "method": "DELETE",
+            "headers": [],
+            "params": [],
+            "body": {
+              "mode": "none",
+              "formUrlEncoded": [],
+              "multipartForm": [],
+              "file": []
+            },
+            "script": {},
+            "vars": {},
+            "assertions": [],
+            "tests": "",
+            "docs": "",
+            "auth": {
+              "mode": "inherit"
+            }
+          }
+        },
+        {
+          "type": "http",
+          "name": "UserUpdate",
+          "filename": "UserUpdate.bru",
+          "seq": 4,
+          "request": {
+            "url": "http://localhost:3333/user/update/d5fccba9-9d92-49e6-a9d9-805331e471b4",
+            "method": "PUT",
+            "headers": [],
+            "params": [],
+            "body": {
+              "mode": "json",
+              "json": "{\n  \"userName\": \"gutto\",\n  \"userEmail\": \"gutto@gmail.com\",\n  \"userCPF\": \"123.456.789-12\",\n  \"userPhone\": \"(11) 99999-1235\", \n  \"userPassword\": \"123456780\"   \n}",
+              "formUrlEncoded": [],
+              "multipartForm": [],
+              "file": []
+            },
+            "script": {},
+            "vars": {},
+            "assertions": [],
+            "tests": "",
+            "docs": "",
+            "auth": {
+              "mode": "inherit"
+            }
+          }
+        }
+      ]
+    }
+  ],
+  "environments": [],
+  "brunoConfig": {
+    "version": "1",
+    "name": "PiuPiuWer",
+    "type": "collection",
+    "ignore": [
+      "node_modules",
+      ".git"
+    ],
+    "size": 0.0019712448120117188,
+    "filesCount": 11
+  }
+}

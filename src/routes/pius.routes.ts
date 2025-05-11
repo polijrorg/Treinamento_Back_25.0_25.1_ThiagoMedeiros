@@ -7,7 +7,7 @@ const piusRouter = Router();
 export const repository = new PiusRepository();
 
 // ================================================================================
-piusRouter.post('/createPiu', (request: Request, response: Response) => {
+piusRouter.post('/create', (request: Request, response: Response) => {
     const { message, numLike, numComment } = request.body;
 
     if(!message || !numLike || !numComment) {
@@ -21,29 +21,28 @@ piusRouter.post('/createPiu', (request: Request, response: Response) => {
 });
 
 // ================================================================================
-piusRouter.get('/getAllPius', (request: Request, response: Response) => {
+piusRouter.get('/getAll', (request: Request, response: Response) => {
     const getAllPiusService = new PiusService(repository);
     const pius = getAllPiusService.getAllPius();
     return response.json(pius);
 });
 
 // ================================================================================
-piusRouter.delete('/:id', (request: Request, response: Response) => {
+piusRouter.delete('/delete/:id', (request: Request, response: Response) => {
     const deletePiuService = new PiusService(repository);
-    const deletedPiu = deletePiuService.deletePiu(request.params.piuId)
+    const deletedPiu = deletePiuService.deletePiu(request.params.id)
     
     if(!deletedPiu) {
         return response.status(400).json({ message: 'piu não encontrado'});
     }
 
-    return response.status(200).send();
+    return response.status(200).json({message: 'piu excluido com sucesso', deletedPiu});
 });
 
 // ================================================================================
-
-piusRouter.get('/piuId:', (request: Request, response: Response) => {
+piusRouter.get('/getById/:id', (request: Request, response: Response) => {
     const getPiuService = new PiusService(repository);
-    const determinedPiu = getPiuService.getPiuById(request.params.piuId);
+    const determinedPiu = getPiuService.getPiuById(request.params.id);
     return response.status(200).json(determinedPiu);
 });
 

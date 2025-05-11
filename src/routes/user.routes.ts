@@ -16,6 +16,17 @@ userRouter.post('/create', (request: Request, response: Response) => {
         });
     }
 
+    const cpfRegex = /^\d{3}\.\d{3}\.\d{3}-\d{2}$/;
+    const phoneRegex = /^\(\d{2}\) \d{5}-\d{4}$/;
+
+    if (!cpfRegex.test(userCPF)) {
+        return response.status(400).json({message: 'CPF inválido. Formato esperado: XXX.XXX.XXX-XX',});
+    }
+
+    if (!phoneRegex.test(userPhone)) {
+        return response.status(400).json({message: 'Telefone inválido. Formato esperado: (XX) XXXXX-XXXX',});
+    }
+
     const createService = new UserService(userRepository);
 
     const usuario = createService.createUser({userName, userEmail, userCPF, userPhone, userPassword});
@@ -23,26 +34,21 @@ userRouter.post('/create', (request: Request, response: Response) => {
 });
 
 // =============================================================================================================================
-userRouter.get('/getAllUsers', (request: Request, response: Response) => {
+userRouter.get('/getAll', (request: Request, response: Response) => {
     const getAllUsersService = new UserService(userRepository);
     const users = getAllUsersService.getAllUsers();
     return response.json(users);
 });
 
 // =============================================================================================================================
-userRouter.get('/id:', (request: Request, response: Response) => {
-    // try {
+userRouter.get('/getById/:id', (request: Request, response: Response) => {
         const getService = new UserService(userRepository); 
-        const usuario = getService.getUserById(request.params.userId);
+        const usuario = getService.getUserById(request.params.id);
         return response.status(200).json(usuario); 
-
-    // } catch (e: any) { 
-    //     return response.status(400).json({error: e.message});
-    // }
 });
 
 // =============================================================================================================================
-userRouter.put('/:id', (request: Request, response: Response) => {
+userRouter.put('/update/:id', (request: Request, response: Response) => {
     const {userName, userEmail, userCPF, userPhone, userPassword} = request.body;
 
     if (!userName || !userEmail || !userCPF || !userPhone || !userPassword) {
@@ -52,28 +58,29 @@ userRouter.put('/:id', (request: Request, response: Response) => {
     }
 
     const updateService = new UserService(userRepository);
-    const updatedUser = updateService.update(request.params.userId, userName, userEmail, userCPF, userPhone, userPassword);
+    const updatedUser = updateService.update(request.params.id, userName, userEmail, userCPF, userPhone, userPassword);
 
     if (!updatedUser) {
         return response.status(400).json({ message: 'usuário não encontrado' });
     }
 
-    return response.json(updatedUser)
+    return response.status(200).json(updatedUser);
 });
 
 // ==========================================================================================================================
-userRouter.delete('/:id', (request: Request, response: Response) => {
-    const { userId } = request.params;
+userRouter.delete('/delete/:id', (request: Request, response: Response) => {
+    const { id } = request.params;
 
     const deleteService = new UserService(userRepository);
-    const deleted = deleteService.deleteUser(userId); // request.params.userId
+    const deleted = deleteService.deleteUser(id); // request.params.userId
 
     if (!deleted) {
         return response.status(400).json({ message: 'usuário não encontrado' });
      }
 
-    return response.status(200).send();
+    return response.status(200).json({message: 'usuário excluido com sucesso'});
 });
+
 // ===========================================================================================================================
 
 
