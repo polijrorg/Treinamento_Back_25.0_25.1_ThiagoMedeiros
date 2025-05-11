@@ -2,8 +2,8 @@
   "name": "piupiuwer-backend",
   "version": "1.0.0",
   "main": "dist/server.js",
-  "repository": "COLOCAR SEU LINK DE REPOSITORIO AQUI",
-  "author": "SEU NOME AQUI <SEU EMAIL AQUI>",
+  "repository": "https://github.com/polijrorg/Treinamento_Back_25.0_25.1_ThiagoMedeiros",
+  "author": "Thiago Franco Medeiros <thiago.medeiros@polijunior.com.br>",
   "license": "MIT",
   "scripts": {
     "dev:server": "ts-node-dev --respawn --transpile-only src/server.ts",

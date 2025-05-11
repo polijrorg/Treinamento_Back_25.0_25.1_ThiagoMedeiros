@@ -43,8 +43,8 @@ const heroesRouter = Router();
  * que por sua vez cria o herói e o armazena via HeroRepository.
  */
 
-heroesRouter.post('/', (req, res) => {
-  const { name, power } = req.body;
+heroesRouter.post('/create', (req, res) => {
+  const { name, power, idade } = req.body;
 
   if (!name || !power) {
     return res.status(400).json({
@@ -52,7 +52,7 @@ heroesRouter.post('/', (req, res) => {
     });
   }
 
-  const hero = HeroService.create(name, power);
+  const hero = HeroService.create(name, power, idade);
   return res.status(201).json(hero);
 });
 

@@ -30,6 +30,7 @@ interface ICreateHeroDTO {
   id: string;
   name: string;
   power: string;
+  idade: number;
 }
 
 interface IUpdateHeroDTO {
@@ -52,9 +53,9 @@ class HeroRepository {
   // CREATE → Cria e armazena um novo herói
   // ========================================
   public create(data: ICreateHeroDTO): Hero {
-    const { id, name, power } = data;
+    const { id, name, power, idade } = data;
 
-    const hero = new Hero(id, name, power);
+    const hero = new Hero(id, name, power, idade);
     this.heroes.push(hero); // salva no array
 
     return hero;

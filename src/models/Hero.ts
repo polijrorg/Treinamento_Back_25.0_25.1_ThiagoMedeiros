@@ -26,14 +26,16 @@ class Hero {
   id: string; // Identificador único do herói
   name: string; // Nome do herói (ex: Batman)
   power: string; // Poder ou habilidade principal (ex: Inteligência)
+  idade: number;
 
   /**
    * Construtor para criar um novo herói com base nos dados fornecidos
    */
-  constructor(id: string, name: string, power: string) {
+  constructor(id: string, name: string, power: string, idade: number) {
     this.id = id;
     this.name = name;
     this.power = power;
+    this.idade = idade;
   }
 }
 

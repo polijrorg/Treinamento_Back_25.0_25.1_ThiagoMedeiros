@@ -41,13 +41,14 @@ class HeroService {
    * e em seguida o método 'create' do repositório é chamado
    * para armazenar o herói na fonte de dados (array em memória).
    */
-  public create(name: string, power: string): Hero {
+  public create(name: string, power: string, idade: number): Hero {
     const id = randomUUID(); // Gera um ID único
 
     const hero = this.repository.create({
       id,
       name,
       power,
+      idade,
     });
 
     return hero;

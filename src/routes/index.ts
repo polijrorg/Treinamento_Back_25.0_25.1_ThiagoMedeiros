@@ -23,8 +23,8 @@
 
 import { Router } from 'express';
 
-// Importa o módulo de rotas dos heróis
-import heroesRouter from './heroes.routes';
+import piusRouter from './pius.routes';
+import userRouter from './user.routes';
 
 const routes = Router();
 
@@ -38,8 +38,8 @@ const routes = Router();
  * - GET     /heroes/:id
  * - etc.
  */
-
-routes.use('/heroes', heroesRouter);
+routes.use('/user', userRouter);
+routes.use('/pius', piusRouter);
 
 // Exporta o roteador para ser usado no servidor principal
 export default routes;
